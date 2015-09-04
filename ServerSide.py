@@ -8,7 +8,7 @@ from pprint import pprint
 import json
 
 my_unix_command = ['bc']
-HOST = '1.0.0.0'
+HOST = '2.0.0.0'
 PORT = 2000
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
