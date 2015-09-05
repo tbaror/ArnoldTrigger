@@ -7,8 +7,8 @@ from threading import Thread
 from pprint import pprint
 import json
 
-my_unix_command = ['bc']
-HOST = '2.0.0.0'
+my_unix_command =
+HOST = '0.0.0.0'
 PORT = 2000
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
