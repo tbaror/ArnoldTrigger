@@ -9,6 +9,7 @@ class MyTCPServerHandler(socketserver.BaseRequestHandler):
         try:
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
             # process the data, i.e. print it:
+            print(self.client_address)
             print(data)
             # send some 'ok' back
             self.request.sendall(bytes(json.dumps({'return':'ok'}), 'UTF-8'))
