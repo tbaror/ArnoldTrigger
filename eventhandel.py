@@ -1,18 +1,56 @@
+# Windows Event Log Viewer
+# FB - 201012116
+import win32evtlog # requires pywin32 pre-installed
+
+server = 'localhost' # name of the target computer to get event logs
+logtype = 'Application' # 'Application' # 'Security'
+hand = win32evtlog.OpenEventLog(server,logtype)
+flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
+total = win32evtlog.GetNumberOfEventLogRecords(hand)
+ev = 0
+while ev == 0:
+    events = win32evtlog.ReadEventLog(hand, flags,0)
+    if events:
+        for event in events:
+            if event.EventID == 8216 and event.SourceName == 'System Restore':
+                print ('Event Category:', event.EventCategory)
+                print ('Time Generated:', event.TimeGenerated)
+                print ('Source Name:', event.SourceName)
+                print ('Event ID:', event.EventID)
+                print ('Event Type:', event.EventType)
+                data = event.StringInserts
+                if data:
+                    print ('Event Data:')
+                    for msg in data:
+                        print (msg)
+
+                ev = 1
+    else:
+        ev = 1
+
+class EvntCollector():
+    def __init__(self,EvtHost='localhost',LogType='Application',EvtSourceName='Microsoft-Windows-Power-Troubleshooter',EvtID=51,NumEvt=1):
+        self.EvtHost = EvtHost
+        self.LogType = LogType
+        self.EvtSourceName = EvtSourceName
+        self.EvtID = EvtID
+        self.NumEvt = NumEvt
 
 
-import re
-import  os,json,datetime ,subprocess ,sys
-ts = (str(datetime.datetime.now()))
-jsarray = []
-dictable = {}
-KeyTyp = ''
-KeComm = ''
-ipad = 'ip.addr==172.18.4.10'
-logfile = open("C:/files/stat.txt", 'w')
-tsharkCall = ["wevtutil","qe",'Application','/rd:true','/f:text','/q:'+'"'+"*[System[Provider[@Name="+"'"+"Symantec AntiVirus"+"'"+'] and (Level=1  or Level=2 or Level=3 or Level=4 or Level=0) and TimeCreated[timediff(@SystemTime) <= 3600000]]]"']
-tsharkProc = subprocess.Popen(tsharkCall,executable=os.environ["SystemRoot"] + "/System32/wevtutil.exe",universal_newlines=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    def RetrieveEvent(self):
+        hand = win32evtlog.OpenEventLog(self.EvtHost,self.LogType)
+        flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
+        total = win32evtlog.GetNumberOfEventLogRecords(hand)
+        ev = 0
+        while ev != self.NumEvt:
+            events = win32evtlog.ReadEventLog(hand, flags,0)
+            if events:
+                for event in events:
+                    if event.EventID == self.EvtID and event.SourceName == self.EvtSourceName:
+                        EventData= {}
 
-for plot in tsharkProc.stdout:
-    sys.stdout.write(plot)
-    logfile.write(plot)
 
+
+
+
+print('exit')
