@@ -29,12 +29,13 @@ while ev == 0:
         ev = 1
 
 class EvntCollector():
-    def __init__(self,EvtHost='localhost',LogType='Application',EvtSourceName='Microsoft-Windows-Power-Troubleshooter',EvtID=51,NumEvt=1):
+    def __init__(self,EvtHost='localhost',LogType='Application',EvtSourceName='Microsoft-Windows-Power-Troubleshooter',EvtID=51,NumEvt=1,DataPayload):
         self.EvtHost = EvtHost
         self.LogType = LogType
         self.EvtSourceName = EvtSourceName
         self.EvtID = EvtID
         self.NumEvt = NumEvt
+        self.Datapayload = DataPayload
 
 
     def RetrieveEvent(self):
@@ -47,8 +48,8 @@ class EvntCollector():
             if events:
                 for event in events:
                     if event.EventID == self.EvtID and event.SourceName == self.EvtSourceName:
-                        EventData= {}
 
+                        self.Datapayload= ["EvtSourceName"] = event.SourceName ,self.Datapayload[]
 
 
 
