@@ -49,7 +49,16 @@ class EvntCollector():
                 for event in events:
                     if event.EventID == self.EvtID and event.SourceName == self.EvtSourceName:
 
-                        self.Datapayload= ["EvtSourceName"] = event.SourceName ,self.Datapayload[]
+                        self.Datapayload["EvtSourceName"] = event.SourceName ,self.Datapayload["EvtID"]= self.EvtID
+                    data = event.StringInserts
+                if data:
+
+                    for msg in data:
+                        self.Datapayload["EventData"]= msg
+
+                ev += 1
+        else:
+            ev += 1
 
 
 
