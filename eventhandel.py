@@ -15,7 +15,7 @@ class EvntCollector:
 
 
     def RetrieveEvent(self):
-
+        dt = ''
         hand = win32evtlog.OpenEventLog('localhost',self.LogType)
         flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
         total = win32evtlog.GetNumberOfEventLogRecords(hand)
@@ -26,18 +26,23 @@ class EvntCollector:
                 for event in events:
                     if event.EventID == self.EvtID and event.SourceName == self.EvtSourceName:
 
-                        self.Datapayload["EvtSourceName"] = event.SourceName ,self.Datapayload["EvtID"]= self.EvtID,self.Datapayload['TimeGenerated']= event.TimeGenerated
+                        self.Datapayload["EvtSourceName"] = event.SourceName
+                        self.Datapayload["EvtID"]= self.EvtID
+                        self.Datapayload['TimeGenerated']= str(event.TimeGenerated)
 
                         data = event.StringInserts
                         if data:
 
                             for msg in data:
-                                self.Datapayload["EventData"]= msg
+
+                                dt = dt + msg
+                                print(msg)
+                                self.Datapayload["EventData"]= dt
 
                         ev += 1
             else:
                 ev += 1
         print(self.Datapayload)
 
-eventb = EvntCollector('Application','System Restore',8216,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
+eventb = EvntCollector('Application','MsiInstaller',11724,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
 eventb.RetrieveEvent()

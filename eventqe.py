@@ -1,7 +1,7 @@
 import win32evtlog
 
 server = 'localhost' # name of the target computer to get event logs
-logtype = 'System'
+logtype = 'Application'
 hand = win32evtlog.OpenEventLog('',logtype)
 flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
 total = win32evtlog.GetNumberOfEventLogRecords(hand)
