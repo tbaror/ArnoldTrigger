@@ -9,3 +9,4 @@ s.send(bytes(json.dumps(data), 'UTF-8'))
 result = json.loads(s.recv(1024).decode('UTF-8'))
 print("%s"%result)
 s.close()
+

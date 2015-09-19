@@ -2,44 +2,21 @@
 # FB - 201012116
 import win32evtlog # requires pywin32 pre-installed
 
-server = 'localhost' # name of the target computer to get event logs
-logtype = 'Application' # 'Application' # 'Security'
-hand = win32evtlog.OpenEventLog(server,logtype)
-flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
-total = win32evtlog.GetNumberOfEventLogRecords(hand)
-ev = 0
-while ev == 0:
-    events = win32evtlog.ReadEventLog(hand, flags,0)
-    if events:
-        for event in events:
-            if event.EventID == 8216 and event.SourceName == 'System Restore':
-                print ('Event Category:', event.EventCategory)
-                print ('Time Generated:', event.TimeGenerated)
-                print ('Source Name:', event.SourceName)
-                print ('Event ID:', event.EventID)
-                print ('Event Type:', event.EventType)
-                data = event.StringInserts
-                if data:
-                    print ('Event Data:')
-                    for msg in data:
-                        print (msg)
 
-                ev = 1
-    else:
-        ev = 1
+class EvntCollector:
+    def __init__(self,LogType,EvtSourceName,EvtID,NumEvt,DataPayload):
 
-class EvntCollector():
-    def __init__(self,EvtHost='localhost',LogType='Application',EvtSourceName='Microsoft-Windows-Power-Troubleshooter',EvtID=51,NumEvt=1,DataPayload):
-        self.EvtHost = EvtHost
         self.LogType = LogType
         self.EvtSourceName = EvtSourceName
         self.EvtID = EvtID
         self.NumEvt = NumEvt
         self.Datapayload = DataPayload
+        print(self.Datapayload)
 
 
     def RetrieveEvent(self):
-        hand = win32evtlog.OpenEventLog(self.EvtHost,self.LogType)
+
+        hand = win32evtlog.OpenEventLog('localhost',self.LogType)
         flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
         total = win32evtlog.GetNumberOfEventLogRecords(hand)
         ev = 0
@@ -49,18 +26,18 @@ class EvntCollector():
                 for event in events:
                     if event.EventID == self.EvtID and event.SourceName == self.EvtSourceName:
 
-                        self.Datapayload["EvtSourceName"] = event.SourceName ,self.Datapayload["EvtID"]= self.EvtID
-                    data = event.StringInserts
-                if data:
+                        self.Datapayload["EvtSourceName"] = event.SourceName ,self.Datapayload["EvtID"]= self.EvtID,self.Datapayload['TimeGenerated']= event.TimeGenerated
 
-                    for msg in data:
-                        self.Datapayload["EventData"]= msg
+                        data = event.StringInserts
+                        if data:
 
+                            for msg in data:
+                                self.Datapayload["EventData"]= msg
+
+                        ev += 1
+            else:
                 ev += 1
-        else:
-            ev += 1
+        print(self.Datapayload)
 
-
-
-
-print('exit')
+eventb = EvntCollector('Application','System Restore',8216,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
+eventb.RetrieveEvent()
