@@ -1,6 +1,14 @@
 # Windows Event Log Viewer
 # FB - 201012116
 import win32evtlog # requires pywin32 pre-installed
+import pickle
+
+
+class PassRetriever:
+    def __init__(self,PassFile,DataPayload):
+
+        self.PassFile = PassFile
+
 
 
 class EvntCollector:
@@ -15,7 +23,7 @@ class EvntCollector:
 
 
     def RetrieveEvent(self):
-        dt = ''
+        Datmsg = ''
         hand = win32evtlog.OpenEventLog('localhost',self.LogType)
         flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
         total = win32evtlog.GetNumberOfEventLogRecords(hand)
@@ -35,14 +43,14 @@ class EvntCollector:
 
                             for msg in data:
 
-                                dt = dt + msg
+                                Datmsg = Datmsg + msg
                                 print(msg)
-                                self.Datapayload["EventData"]= dt
+                                self.Datapayload["EventData"]= Datmsg
 
                         ev += 1
             else:
                 ev += 1
         print(self.Datapayload)
 
-eventb = EvntCollector('Application','MsiInstaller',11724,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
+eventb = EvntCollector('Application','System Restore',8216,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
 eventb.RetrieveEvent()
