@@ -2,12 +2,28 @@
 # FB - 201012116
 import win32evtlog # requires pywin32 pre-installed
 import pickle
+import os
+import base64 ,binascii
 
 
 class PassRetriever:
     def __init__(self,PassFile,DataPayload):
 
         self.PassFile = PassFile
+        self.DataPayload = DataPayload
+
+    def GetPassword(self):
+
+        ReadPassword =  pickle.load(open(os.getcwd()+'/'+self.PassFile,'rb'))
+        PassDecoded = base64.decode(ReadPassword)
+        PassDecoded = PassDecoded.decod("utf-8")
+        self.DataPayload['AuthPass'] = PassDecoded
+
+
+
+
+
+
 
 
 
