@@ -3,8 +3,12 @@
 import win32evtlog # requires pywin32 pre-installed
 import pickle
 import os
-import base64 ,binascii
+import base64
+import json
 
+class GetServerInfo:
+    def __init__(self):
+        pass
 
 class PassRetriever:
     def __init__(self,PassFile,DataPayload):
@@ -68,5 +72,5 @@ class EvntCollector:
                 ev += 1
         print(self.Datapayload)
 
-eventb = EvntCollector('Application','System Restore',8216,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
+eventb = EvntCollector('Application','Software Protection Platform Service',1073742726,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
 eventb.RetrieveEvent()
