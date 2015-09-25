@@ -2,13 +2,47 @@
 # FB - 201012116
 import win32evtlog # requires pywin32 pre-installed
 import pickle
-import os
+import os ,sys
 import base64
 import json
 
 class GetServerInfo:
     def __init__(self):
-        pass
+
+    def ReadConfig():
+
+        try:
+            with open('dataset.js') as json_file:
+                #read config from config file
+                DataSet = json.load(json_file)
+
+                #connect to Dalet MS SQL retrieve Dalet Data
+                builder = HostTypesStructureBuilder(DataSet['DaletSiteData'][0]['HostNameDb'],DataSet['DaletSiteData'][0]['UserDb'],DataSet['DaletSiteData'][0]['PasswordDb'],DataSet['DaletSiteData'][0]['DatabaseName'])
+
+                #Structure and organized Data
+                builder.daletDbGetData()
+                dataStructure = builder.build()
+                configuratinBuilder = IcingaConfgurationBuilder(dataStructure)
+
+                #Make sure no old Data remained
+                ctrlconfig = IcingaCheckConfig(dataStructure,DataSet['DaletSiteData'][0]['IcingaDaletConfPath'])
+                ctrlconfig.icingaConfigTruncate()
+
+                #Writing new data files
+                configuratinBuilder.generateConfigurationFilepGroups()
+                configuratinBuilder.generateConfigurationFileHosts()
+
+                #Check for Valid config and apply to load it
+                #ctrlconfig.applyConfig()
+
+                #Save current config for later compare
+                ctrlconfig.saveCurrentConfig()
+
+        except(FileNotFoundError):
+            print('No such file or directory:dataset.js')
+            exit
+
+
 
 class PassRetriever:
     def __init__(self,PassFile,DataPayload):
