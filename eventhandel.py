@@ -52,7 +52,7 @@ class EvntCollector:
             events = win32evtlog.ReadEventLog(hand, flags,0)
             if events:
                 for event in events:
-                    if event.EventID == self.EvtID and event.SourceName == self.EvtSourceName:
+                    if event.EventID == self.EvtID or self.EvtID == '' and event.SourceName == self.EvtSourceName:
 
                         self.Datapayload["EvtSourceName"] = event.SourceName
                         self.Datapayload["EvtID"]= self.EvtID
@@ -71,6 +71,11 @@ class EvntCollector:
             else:
                 ev += 1
         print(self.Datapayload)
+
+class TcpClientConnect:
+    def __init__(self):
+        pass
+
 
 eventb = EvntCollector('Application','Software Protection Platform Service',1073742726,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
 eventb.RetrieveEvent()
