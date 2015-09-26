@@ -9,7 +9,9 @@ import json
 class GetServerInfo:
     def __init__(self):
 
-    def ReadConfig():
+        self.DataPayload ={'EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','EventData':'','TimeGenerated':'','AuthPass':''}
+
+    def ReadConfig(self):
 
         try:
             with open('dataset.js') as json_file:
