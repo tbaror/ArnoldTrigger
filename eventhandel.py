@@ -9,7 +9,7 @@ import json
 class GetServerInfo:
     def __init__(self):
 
-        self.DataPayload ={'EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','EventData':'','TimeGenerated':'','AuthPass':''}
+        self.DataPayload ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','EventData':'','TimeGenerated':'','AuthPass':''}
 
     def ReadConfig(self):
 
@@ -20,6 +20,9 @@ class GetServerInfo:
 
                 #connect to Dalet MS SQL retrieve Dalet Data
                 builder = HostTypesStructureBuilder(DataSet['DaletSiteData'][0]['HostNameDb'],DataSet['DaletSiteData'][0]['UserDb'],DataSet['DaletSiteData'][0]['PasswordDb'],DataSet['DaletSiteData'][0]['DatabaseName'])
+                self.DataPayload['EvtSourceName'] = DataSet['ArnoldSite'][0]['EnforcementHost']
+
+
 
                 #Structure and organized Data
                 builder.daletDbGetData()
