@@ -9,7 +9,7 @@ import json
 class GetServerInfo:
     def __init__(self):
 
-        self.DataPayload ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','EventData':'','TimeGenerated':'','AuthPass':''}
+        self.DataPayload ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','LogType':'','EventData':'','TimeGenerated':'','AuthPass':''}
 
     def ReadConfig(self):
 
@@ -18,9 +18,14 @@ class GetServerInfo:
                 #read config from config file
                 DataSet = json.load(json_file)
 
-                #connect to Dalet MS SQL retrieve Dalet Data
-                builder = HostTypesStructureBuilder(DataSet['DaletSiteData'][0]['HostNameDb'],DataSet['DaletSiteData'][0]['UserDb'],DataSet['DaletSiteData'][0]['PasswordDb'],DataSet['DaletSiteData'][0]['DatabaseName'])
-                self.DataPayload['EvtSourceName'] = DataSet['ArnoldSite'][0]['EnforcementHost']
+                #Retrieve Json Data setting
+
+                self.DataPayload['EnforcementHost'] = DataSet['ArnoldSite'][0]['EnforcementHost']
+                self.DataPayload['EvtSourceName'] = DataSet['ArnoldSite'][0]['EvtSourceName']
+                self.DataPayload['EvtSourceNameII'] = DataSet['ArnoldSite'][0]['EvtSourceNameII']
+                self.DataPayload['EvtID'] = DataSet['ArnoldSite'][0]['EvtID']
+                self.DataPayload['EvtIDII'] = DataSet['ArnoldSite'][0]['EvtIDII']
+                self.DataPayload['LogType'] = DataSet['ArnoldSite'][0]['LogType']
 
 
 
