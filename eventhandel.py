@@ -9,7 +9,7 @@ import json
 class GetServerInfo:
     def __init__(self):
 
-        self.DataPayload ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','LogType':'','EventData':'','TimeGenerated':'','AuthPass':''}
+        self.QuarantineSet ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','LogType':'','EventData':'','TimeGenerated':'','AuthPass':''}
 
     def ReadConfig(self):
 
@@ -20,33 +20,13 @@ class GetServerInfo:
 
                 #Retrieve Json Data setting
 
-                self.DataPayload['EnforcementHost'] = DataSet['ArnoldSite'][0]['EnforcementHost']
-                self.DataPayload['EvtSourceName'] = DataSet['ArnoldSite'][0]['EvtSourceName']
-                self.DataPayload['EvtSourceNameII'] = DataSet['ArnoldSite'][0]['EvtSourceNameII']
-                self.DataPayload['EvtID'] = DataSet['ArnoldSite'][0]['EvtID']
-                self.DataPayload['EvtIDII'] = DataSet['ArnoldSite'][0]['EvtIDII']
-                self.DataPayload['LogType'] = DataSet['ArnoldSite'][0]['LogType']
+                self.QuarantineSet['EnforcementHost'] = DataSet['ArnoldSite'][0]['EnforcementHost']
+                self.QuarantineSet['EvtSourceName'] = DataSet['ArnoldSite'][0]['EvtSourceName']
+                self.QuarantineSet['EvtSourceNameII'] = DataSet['ArnoldSite'][0]['EvtSourceNameII']
+                self.QuarantineSet['EvtID'] = DataSet['ArnoldSite'][0]['EvtID']
+                self.QuarantineSet['EvtIDII'] = DataSet['ArnoldSite'][0]['EvtIDII']
+                self.QuarantineSet['LogType'] = DataSet['ArnoldSite'][0]['LogType']
 
-
-
-                #Structure and organized Data
-                builder.daletDbGetData()
-                dataStructure = builder.build()
-                configuratinBuilder = IcingaConfgurationBuilder(dataStructure)
-
-                #Make sure no old Data remained
-                ctrlconfig = IcingaCheckConfig(dataStructure,DataSet['DaletSiteData'][0]['IcingaDaletConfPath'])
-                ctrlconfig.icingaConfigTruncate()
-
-                #Writing new data files
-                configuratinBuilder.generateConfigurationFilepGroups()
-                configuratinBuilder.generateConfigurationFileHosts()
-
-                #Check for Valid config and apply to load it
-                #ctrlconfig.applyConfig()
-
-                #Save current config for later compare
-                ctrlconfig.saveCurrentConfig()
 
         except(FileNotFoundError):
             print('No such file or directory:dataset.js')
