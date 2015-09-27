@@ -9,12 +9,12 @@ import json
 class GetServerInfo:
     def __init__(self):
 
-        self.QuarantineSet ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EvtID':'','EvtIDII':'','LogType':'','EventData':'','TimeGenerated':'','AuthPass':''}
+        self.QuarantineSet ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EvtIDII':'','LogType':'','EventData':'','TimeGenerated':'','AuthPass':''}
 
     def ReadConfig(self):
 
         try:
-            with open('dataset.js') as json_file:
+            with open(os.getcwd()+'\dataset.js') as json_file:
                 #read config from config file
                 DataSet = json.load(json_file)
 
@@ -23,9 +23,10 @@ class GetServerInfo:
                 self.QuarantineSet['EnforcementHost'] = DataSet['ArnoldSite'][0]['EnforcementHost']
                 self.QuarantineSet['EvtSourceName'] = DataSet['ArnoldSite'][0]['EvtSourceName']
                 self.QuarantineSet['EvtSourceNameII'] = DataSet['ArnoldSite'][0]['EvtSourceNameII']
-                self.QuarantineSet['EvtID'] = DataSet['ArnoldSite'][0]['EvtID']
-                self.QuarantineSet['EvtIDII'] = DataSet['ArnoldSite'][0]['EvtIDII']
+                self.QuarantineSet['EventID'] = DataSet['ArnoldSite'][0]['EventID']
+                self.QuarantineSet['EventIdII'] = DataSet['ArnoldSite'][0]['EventIdII']
                 self.QuarantineSet['LogType'] = DataSet['ArnoldSite'][0]['LogType']
+                return self.QuarantineSet
 
 
         except(FileNotFoundError):
@@ -35,10 +36,10 @@ class GetServerInfo:
 
 
 class PassRetriever:
-    def __init__(self,PassFile,DataPayload):
+    def __init__(self,PassFile,):
 
         self.PassFile = PassFile
-        self.DataPayload = DataPayload
+        self.AuthPass = DataPayload
 
     def GetPassword(self):
 
@@ -46,6 +47,7 @@ class PassRetriever:
         PassDecoded = base64.decode(ReadPassword)
         PassDecoded = PassDecoded.decod("utf-8")
         self.DataPayload['AuthPass'] = PassDecoded
+        readconfig
 
 
 
@@ -103,3 +105,6 @@ class TcpClientConnect:
 
 eventb = EvntCollector('Application','Software Protection Platform Service',1073742726,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
 eventb.RetrieveEvent()
+readconfig = GetServerInfo()
+test = readconfig.ReadConfig()
+print(test['LogType'])
