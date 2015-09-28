@@ -4,5 +4,8 @@
     "EventIdII":"51",
     "LogType":"Application",
     "EvtSourceName":"Software Protection Platform Service",
-    "EvtSourceNameII":""}
+    "EvtSourceNameII":"",
+    "PassFile":"tokenpass",
+    "NumEvt":"1"
+    }
 ]}
