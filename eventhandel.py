@@ -2,14 +2,14 @@
 # FB - 201012116
 import win32evtlog # requires pywin32 pre-installed
 import pickle
-import os ,sys
+import os ,socket
 import base64
 import json
 
 class GetServerInfo:
     def __init__(self):
 
-        self.QuarantineSet ={'EnforcementHost':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','EventData':'','NumEvt':'','AuthPass':''}
+        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','EventData':'','NumEvt':'','AuthPass':''}
 
     def ReadConfig(self):
 
@@ -21,6 +21,7 @@ class GetServerInfo:
                 #Retrieve Json Data setting
 
                 self.QuarantineSet['EnforcementHost'] = DataSet['ArnoldSite'][0]['EnforcementHost']
+                self.QuarantineSet['SrvPort'] = DataSet['ArnoldSite'][0]['SrvPort']
                 self.QuarantineSet['EvtSourceName'] = DataSet['ArnoldSite'][0]['EvtSourceName']
                 self.QuarantineSet['EvtSourceNameII'] = DataSet['ArnoldSite'][0]['EvtSourceNameII']
                 self.QuarantineSet['EventID'] = DataSet['ArnoldSite'][0]['EventID']
