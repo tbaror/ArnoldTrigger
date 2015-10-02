@@ -84,7 +84,7 @@ class EvntCollector:
         self.EvntID = EvntID
         self.EvntIdII = EvntIdII
         self.NumEvt = NumEvt
-        self.Datapayload = ''
+        self.Datapayload = {}
 
 
 
@@ -98,10 +98,10 @@ class EvntCollector:
             events = win32evtlog.ReadEventLog(hand, flags,0)
             if events:
                 for event in events:
-                    if event.EventID == self.EvntID or self.EvntID == '' and event.SourceName == self.EvtSourceName:
+                    if (event.EventID == self.EvntID or event.EventID == self.EvntIdII) and (event.SourceName == self.EvtSourceName or event.SourceName == self.EvtSourceNameII):
 
                         self.Datapayload["EvtSourceName"] = event.SourceName
-                        self.Datapayload["EvtID"]= self.EvtID
+                        self.Datapayload["EvntID"]= self.EvntID
                         self.Datapayload['TimeGenerated']= str(event.TimeGenerated)
 
                         data = event.StringInserts
@@ -119,10 +119,14 @@ class EvntCollector:
         print(self.Datapayload)
 
 class TcpClientConnect:
-    def __init__(self):
+    def __init__(self,Datapayload,EnforcementHost,SrvPort):
+        self.Datapayload = Datapayload
+        self.EnforcementHost = EnforcementHost
+        self.SrvPort = SrvPort
 
+    def ContactEnforcementHost(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(('127.0.0.1', 13373))
+        s.connect((self.EnforcementHost, int(self.SrvPort)))
         s.send(bytes(json.dumps(data), 'UTF-8'))
         result = json.loads(s.recv(1024).decode('UTF-8'))
         print("%s"%result)
