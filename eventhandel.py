@@ -14,7 +14,7 @@ class GetServerInfo:
     def ReadConfig(self):
 
         try:
-            with open(os.getcwd()+'\dataset.js') as json_file:
+            with open(os.getcwd()+'/dataset.js') as json_file:
                 #read config from config file
                 DataSet = json.load(json_file)
 
@@ -41,11 +41,11 @@ class PassRetriever:
     def __init__(self):
 
         self.PassFile = ''
-        self.AuthPass = ''
+        self.AuthPass = {}
     def ReadConfig(self):
 
         try:
-            with open(os.getcwd()+'\dataset.js') as json_file:
+            with open(os.getcwd()+'/dataset.js') as json_file:
                 #read config from config file
                 DataSet = json.load(json_file)
 
@@ -60,17 +60,12 @@ class PassRetriever:
 
     def GetPassword(self):
 
-
         ReadPassword =  pickle.load(open(os.getcwd()+'/'+self.ReadConfig(),'rb'))
-        PassDecoded = base64.decode(ReadPassword)
-        PassDecoded = PassDecoded.decod("utf-8")
-        self.AuthPass = PassDecoded
+        print(ReadPassword)
+        PassDecoded = base64.decode(ReadPassword,None)
+        self.AuthPass = PassDecoded.decod("utf-8")
+
         return self.AuthPass
-
-
-
-
-
 
 
 
@@ -116,7 +111,7 @@ class EvntCollector:
                         ev += 1
             else:
                 ev += 1
-        print(self.Datapayload)
+        return self.Datapayload
 
 class TcpClientConnect:
     def __init__(self,Datapayload,EnforcementHost,SrvPort):
@@ -128,14 +123,15 @@ class TcpClientConnect:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.EnforcementHost, int(self.SrvPort)))
         s.send(bytes(json.dumps(data), 'UTF-8'))
+        #Waiting for results
         result = json.loads(s.recv(1024).decode('UTF-8'))
         print("%s"%result)
         s.close()
 
 
 
-eventb = EvntCollector('Application','Software Protection Platform Service',1073742726,1,{"EvtSourceName":'',"EvtID":'',"TimeGenerated":'',"EventData":''})
-eventb.RetrieveEvent()
-readconfig = GetServerInfo()
-test = readconfig.ReadConfig()
-print(test['LogType'])
+eventb = GetServerInfo()
+eventb.ReadConfig()
+passgetter = PassRetriever()
+passgetter.ReadConfig()
+passgetter.GetPassword()

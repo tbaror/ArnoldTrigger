@@ -1,6 +1,6 @@
 {"ArnoldSite":[
     {"EnforcementHost":"172.18.11.251",
-    "SrvPort":"3031"
+    "SrvPort":"3031",
     "EventID":"51",
     "EventIdII":"51",
     "LogType":"Application",
