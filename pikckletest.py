@@ -12,15 +12,16 @@ token = f.encrypt(b"Esprit12")
 print('encryoted ',token)
 encoded = base64.b64encode(token)
 print('encoded: ',encoded)
+print(type(encoded))
 
 
 
 decoded = base64.b64decode(encoded)
-print('decoded ',decoded.decode("utf-8") )
+#print('decoded ',decoded.decode("utf-8") )
 toto = decoded.decode("utf-8")
-print('decoded byte ',bytes(toto, 'utf-8') )
+#print('decoded byte ',bytes(toto, 'utf-8') )
 
-print('password ',f.decrypt(decoded))
+#print('password ',f.decrypt(decoded))
 
 # write python dict to a file
 mydict = encoded
@@ -36,4 +37,7 @@ t = 'tIoUIXthxKcwzYY9uEKnyyir_eKQUlCqvB1tKH5eG7U='
 t = bytes(t ,'utf-8')
 print(t)
 print (mydict)
-print (mydict2)
+print (str(mydict2))
+outdec = ''
+#mydict = encoded.decode('utf-8')
+print(base64.decode(mydict2,outdec))

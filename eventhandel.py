@@ -41,7 +41,7 @@ class PassRetriever:
     def __init__(self):
 
         self.PassFile = ''
-        self.AuthPass = {}
+        self.AuthPass = ''
     def ReadConfig(self):
 
         try:
@@ -61,9 +61,9 @@ class PassRetriever:
     def GetPassword(self):
 
         ReadPassword =  pickle.load(open(os.getcwd()+'/'+self.ReadConfig(),'rb'))
-        print(ReadPassword)
-        PassDecoded = base64.decode(ReadPassword,None)
-        self.AuthPass = PassDecoded.decod("utf-8")
+        PassDecoded = base64.b64decode(ReadPassword)
+        self.AuthPass = PassDecoded.decode("utf-8")
+
 
         return self.AuthPass
 
@@ -135,3 +135,6 @@ eventb.ReadConfig()
 passgetter = PassRetriever()
 passgetter.ReadConfig()
 passgetter.GetPassword()
+sendalert = TcpClientConnect()
+
+
