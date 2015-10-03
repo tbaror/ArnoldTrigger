@@ -9,7 +9,7 @@ import json
 class GetServerInfo:
     def __init__(self):
 
-        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','EventData':'','NumEvt':'','AuthPass':''}
+        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','NumEvt':''}
 
     def ReadConfig(self):
 
@@ -131,7 +131,8 @@ class TcpClientConnect:
 
 
 eventb = GetServerInfo()
-eventb.ReadConfig()
+data = eventb.ReadConfig()
+print(data)
 passgetter = PassRetriever()
 passgetter.ReadConfig()
 passgetter.GetPassword()
