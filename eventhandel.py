@@ -132,10 +132,13 @@ class TcpClientConnect:
 
 eventb = GetServerInfo()
 data = eventb.ReadConfig()
-print(data)
+print(data['LogType'])
 passgetter = PassRetriever()
 passgetter.ReadConfig()
 passgetter.GetPassword()
-sendalert = TcpClientConnect()
+QueryEvent = EvntCollector(data['LogType'],data['EvtSourceName'],data['EvtSourceNameII'],data['EvntID'],\
+                           data['EvntIdII'],data['NumEvt'])
+#QueryEvent.
+#sendalert = TcpClientConnect()
 
 
