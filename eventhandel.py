@@ -93,7 +93,7 @@ class EvntCollector:
             events = win32evtlog.ReadEventLog(hand, flags,0)
             if events:
                 for event in events:
-                    if (event.EventID == self.EvntID or event.EventID == self.EvntIdII) and (event.SourceName == self.EvtSourceName or event.SourceName == self.EvtSourceNameII):
+                    if (event.EventID == int(self.EvntID) or event.EventID == int(self.EvntIdII)) and (event.SourceName == self.EvtSourceName or event.SourceName == self.EvtSourceNameII):
 
                         self.Datapayload["EvtSourceName"] = event.SourceName
                         self.Datapayload["EvntID"]= self.EvntID
@@ -136,8 +136,8 @@ print(data['LogType'])
 passgetter = PassRetriever()
 passgetter.ReadConfig()
 passgetter.GetPassword()
-QueryEvent = EvntCollector(data['LogType'],data['EvtSourceName'],data['EvtSourceNameII'],data['EvntID'],\
-                           data['EvntIdII'],data['NumEvt'])
+QueryEvent = EvntCollector(data['LogType'],data['EvtSourceName'],data['EvtSourceNameII'],data['EventID'],\
+                           data['EventIdII'],data['NumEvt'])
 #QueryEvent.
 #sendalert = TcpClientConnect()
 
