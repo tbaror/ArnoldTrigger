@@ -89,7 +89,7 @@ class EvntCollector:
         flags = win32evtlog.EVENTLOG_BACKWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
         total = win32evtlog.GetNumberOfEventLogRecords(hand)
         ev = 0
-        while ev != self.NumEvt:
+        while ev != int(self.NumEvt):
             events = win32evtlog.ReadEventLog(hand, flags,0)
             if events:
                 for event in events:
@@ -98,14 +98,14 @@ class EvntCollector:
                         self.Datapayload["EvtSourceName"] = event.SourceName
                         self.Datapayload["EvntID"]= self.EvntID
                         self.Datapayload['TimeGenerated']= str(event.TimeGenerated)
-
+                        #print(self.Datapayload)
                         data = event.StringInserts
                         if data:
 
                             for msg in data:
 
                                 Datmsg = Datmsg + msg
-                                print(msg)
+                                #print(msg)
                                 self.Datapayload["EventData"]= Datmsg
 
                         ev += 1
@@ -138,6 +138,9 @@ passgetter.ReadConfig()
 passgetter.GetPassword()
 QueryEvent = EvntCollector(data['LogType'],data['EvtSourceName'],data['EvtSourceNameII'],data['EventID'],\
                            data['EventIdII'],data['NumEvt'])
+datap = QueryEvent.RetrieveEvent()
+
+print(datap)
 #QueryEvent.
 #sendalert = TcpClientConnect()
 
