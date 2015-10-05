@@ -1,5 +1,5 @@
 {"ArnoldSite":[
-    {"EnforcementHost":"172.18.11.251",
+    {"EnforcementHost":"127.0.0.1",
     "SrvPort":"3031",
     "EventID":"1001",
     "EventIdII":"4097",

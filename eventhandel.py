@@ -111,6 +111,7 @@ class EvntCollector:
                         ev += 1
             else:
                 ev += 1
+
         return self.Datapayload
 
 class TcpClientConnect:
@@ -122,7 +123,7 @@ class TcpClientConnect:
     def ContactEnforcementHost(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.EnforcementHost, int(self.SrvPort)))
-        s.send(bytes(json.dumps(data), 'UTF-8'))
+        s.send(bytes(json.dumps(self.Datapayload), 'UTF-8'))
         #Waiting for results
         result = json.loads(s.recv(1024).decode('UTF-8'))
         print("%s"%result)
@@ -140,8 +141,11 @@ QueryEvent = EvntCollector(data['LogType'],data['EvtSourceName'],data['EvtSource
                            data['EventIdII'],data['NumEvt'])
 datap = QueryEvent.RetrieveEvent()
 
-print(datap)
+
 #QueryEvent.
-#sendalert = TcpClientConnect()
+datap['AuthPass'] = passgetter.GetPassword()
+print(datap)
+sendalert = TcpClientConnect(datap,data['EnforcementHost'],data['SrvPort'])
+sendalert.ContactEnforcementHost()
 
 
