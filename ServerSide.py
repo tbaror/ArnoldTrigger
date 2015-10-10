@@ -10,6 +10,32 @@ import json
 my_unix_command =
 HOST = '0.0.0.0'
 PORT = 2000
+class GetServerInfo:
+    def __init__(self):
+        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':''}
+
+    def ReadConfig(self):
+
+        try:
+            with open(os.getcwd()+'/srvdataset.js') as json_file:
+                #read config from config file
+                DataSet = json.load(json_file)
+
+                #Retrieve Json Data setting
+
+                self.ServerSet['EnforcementHost'] = DataSet['ArnoldSite'][0]['EnforcementHost']
+                self.ServerSet['SrvPort'] = DataSet['ArnoldSite'][0]['SrvPort']
+                self.ServerSet['QuarantineIp'] = DataSet['ArnoldSite'][0]['QuarantineIp']
+                self.ServerSet['QrnPort'] = DataSet['ArnoldSite'][0]['QrnPort']
+
+                return self.ServerSet
+
+
+        except(FileNotFoundError):
+            print('No such file or directory:dataset.js')
+            exit
+
+
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
     "One instance per connection.  Override handle(self) to customize action."

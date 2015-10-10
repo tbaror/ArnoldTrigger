@@ -2,7 +2,7 @@
 # FB - 201012116
 import win32evtlog # requires pywin32 pre-installed
 import pickle
-import os ,socket ,getpass
+import os ,socket
 import base64
 import json
 
@@ -79,7 +79,7 @@ class EvntCollector:
         self.EvntID = EvntID
         self.EvntIdII = EvntIdII
         self.NumEvt = NumEvt
-        self.UserName = getpass.getuser()
+        self.UserName = os.environ['USERNAME']
         self.Datapayload = {}
 
 
