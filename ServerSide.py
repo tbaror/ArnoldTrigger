@@ -47,7 +47,7 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
         self.request.send('OK'.encode('utf-8'))
         self.request.close()
 
-class SimpleServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     # Ctrl-C will cleanly kill all spawned threads
     daemon_threads = True
     # much faster rebinding
@@ -57,7 +57,7 @@ class SimpleServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         socketserver.TCPServer.__init__(self, server_address, RequestHandlerClass)
 
 if __name__ == "__main__":
-    server = SimpleServer((HOST, PORT), SingleTCPHandler)
+    server = TcpSessionServer((HOST, PORT), SingleTCPHandler)
     # terminate with Ctrl-C
     try:
         server.serve_forever()
