@@ -1,5 +1,5 @@
 import socketserver
-import json
+import json,os
 
 
 class GetServerInfo:
@@ -34,17 +34,17 @@ class InitTCPServer(socketserver.ThreadingTCPServer):
     allow_reuse_address = True
 
 class StartTCPServerHandler(socketserver.BaseRequestHandler):
-    def __init__(self,EnforcementHost,SrvPort,QuarantineIp,QrnPort):
+    def __init__(self,QuarantineIp,QrnPort):
 
-        self.EnforcementHost = EnforcementHost
-        self.SrvPort = SrvPort
+
         self.QuarantineIp = QuarantineIp
         self.QrnPort = QrnPort
+
     def handle(self):
         try:
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
             # process the data, i.e. print it:
-            print(self.client_address)
+            #print(self.client_address)
             print(data)
             # send some 'ok' back
             self.request.sendall(bytes(json.dumps({'return':'ok'}), 'UTF-8'))
@@ -56,6 +56,7 @@ class EnforceAction:
     def __init__(self):
         pass
 
-
-server = MyTCPServer(('0.0.0.0', 3031), MyTCPServerHandler)
+serverinit = GetServerInfo()
+serverset = serverinit.ReadConfig()
+server = InitTCPServer(('0.0.0.0', 3031), StartTCPServerHandler(serverset['QuarantineIp'],serverset['QrnPort']))
 server.serve_forever()

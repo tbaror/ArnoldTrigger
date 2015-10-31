@@ -44,7 +44,7 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
         data = self.request.recv(1024)  # clip input at 1Kb
         text = data.decode('utf-8')
         pprint(json.loads(text))
-        self.request.send({'return':'ok'}.encode('utf-8'))
+        self.request.send('OK'.encode('utf-8'))
         self.request.close()
 
 class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
