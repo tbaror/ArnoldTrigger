@@ -5,11 +5,11 @@
 import socketserver, subprocess, sys
 from threading import Thread
 from pprint import pprint
-import json
+import json ,os
 
-my_unix_command =
+my_unix_command = ''
 HOST = '0.0.0.0'
-PORT = 2000
+PORT = 3031
 class GetServerInfo:
     def __init__(self):
         self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':''}

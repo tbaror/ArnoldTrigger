@@ -30,10 +30,16 @@ class GetServerInfo:
 
 
 
-class MyTCPServer(socketserver.ThreadingTCPServer):
+class InitTCPServer(socketserver.ThreadingTCPServer):
     allow_reuse_address = True
 
-class MyTCPServerHandler(socketserver.BaseRequestHandler):
+class StartTCPServerHandler(socketserver.BaseRequestHandler):
+    def __init__(self,EnforcementHost,SrvPort,QuarantineIp,QrnPort):
+
+        self.EnforcementHost = EnforcementHost
+        self.SrvPort = SrvPort
+        self.QuarantineIp = QuarantineIp
+        self.QrnPort = QrnPort
     def handle(self):
         try:
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
@@ -44,6 +50,12 @@ class MyTCPServerHandler(socketserver.BaseRequestHandler):
             self.request.sendall(bytes(json.dumps({'return':'ok'}), 'UTF-8'))
         except Exception as e:
             print("Exception wile receiving message: ", e)
+
+
+class EnforceAction:
+    def __init__(self):
+        pass
+
 
 server = MyTCPServer(('0.0.0.0', 3031), MyTCPServerHandler)
 server.serve_forever()
