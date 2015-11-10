@@ -40,13 +40,15 @@ class GetServerInfo:
 class SingleTCPHandler(socketserver.BaseRequestHandler):
     "One instance per connection.  Override handle(self) to customize action."
     def handle(self):
-        # self.request is the client connection
-        data = self.request.recv(1024)  # clip input at 1Kb
-        text = data.decode('utf-8')
-        pprint(json.loads(text))
-        self.request.send({'return':'ok'}.encode('utf-8'))
-        self.request.close()
-
+        try:
+            data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
+            # process the data, i.e. print it:
+            #print(self.client_address)
+            print(data)
+            # send some 'ok' back
+            self.request.sendall(bytes(json.dumps({'return':'ok','SERVERIP':self.client_address[0]}), 'UTF-8'))
+        except Exception as e:
+            print("Exception wile receiving message: ", e)
 class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     # Ctrl-C will cleanly kill all spawned threads
     daemon_threads = True
@@ -57,7 +59,10 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         socketserver.TCPServer.__init__(self, server_address, RequestHandlerClass)
 
 if __name__ == "__main__":
-    server = TcpSessionServer((HOST, PORT), SingleTCPHandler)
+    serverinit = GetServerInfo()
+    serverset = serverinit.ReadConfig()
+    print(serverset['EnforcementHost'],int(serverset['SrvPort']))
+    server = TcpSessionServer((serverset['EnforcementHost'], int(serverset['SrvPort'])), SingleTCPHandler(serverset['QuarantineIp'],serverset['QrnPort']))
     # terminate with Ctrl-C
     try:
         server.serve_forever()

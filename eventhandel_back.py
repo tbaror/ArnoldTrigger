@@ -127,11 +127,8 @@ class TcpClientConnect:
         s.connect((self.EnforcementHost, int(self.SrvPort)))
         s.send(bytes(json.dumps(self.Datapayload), 'UTF-8'))
         #Waiting for results
-        result = s.recv(1024)
-        txres =  result.decode('UTF-8')
-
-        jsresult = json.loads(txres)
-        print("%s"%jsresult)
+        result = json.loads(s.recv(1024).decode('UTF-8'))
+        print("%s"%result)
         s.close()
 
 
