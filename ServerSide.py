@@ -7,9 +7,6 @@ from threading import Thread
 from pprint import pprint
 import json ,os
 
-my_unix_command = ''
-HOST = '0.0.0.0'
-PORT = 3031
 class GetServerInfo:
     def __init__(self):
         self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':''}
@@ -39,6 +36,11 @@ class GetServerInfo:
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
     "One instance per connection.  Override handle(self) to customize action."
+    def __init__(self,QuarantineIp,QrnPort):
+
+        self.QuarantineIp = QuarantineIp
+        self.QrnPort = QrnPort
+
     def handle(self):
         try:
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
@@ -46,7 +48,7 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
             #print(self.client_address)
             print(data)
             # send some 'ok' back
-            self.request.sendall(bytes(json.dumps({'return':'ok','SERVERIP':self.client_address[0]}), 'UTF-8'))
+            self.request.sendall(bytes(json.dumps({'return':'ok','SERVERIP':'self.client_address[0]'}), 'UTF-8'))
         except Exception as e:
             print("Exception wile receiving message: ", e)
 class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
