@@ -39,7 +39,9 @@ class GetServerInfo:
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
     "One instance per connection.  Override handle(self) to customize action."
+
     def handle(self):
+
         try:
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
             # process the data, i.e. print it:
