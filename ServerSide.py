@@ -40,13 +40,16 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
 
     def handle(self):
         try:
+
+
             print(self.server.serverset)
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
             # process the data, i.e. print it:
             #print(self.client_address)
             print(data)
             # send some 'ok' back
-            self.request.sendall(bytes(json.dumps({'return':'ok','SERVERIP':'self.client_address[0]'}), 'UTF-8'))
+            #self.server.serverset['QuarantineIp']
+            self.request.sendall(bytes(json.dumps({'QuarantineIp':self.server.serverset['QuarantineIp'],'SERVERIP':self.client_address[0]}), 'UTF-8'))
         except Exception as e:
             print("Exception wile receiving message: ", e)
 class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
@@ -61,6 +64,15 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         #read configuraiton and seve it as class member
         serverinit = GetServerInfo()
         self.serverset = serverinit.ReadConfig()
+
+class AuthMec:
+    def __init__(self,AuthPass):
+        self.AuthPass = AuthPass
+
+    def DecPass(self):
+
+
+
 
 if __name__ == "__main__":
     serverinit = GetServerInfo()

@@ -19,9 +19,9 @@ print(type(encoded))
 decoded = base64.b64decode(encoded)
 #print('decoded ',decoded.decode("utf-8") )
 toto = decoded.decode("utf-8")
-#print('decoded byte ',bytes(toto, 'utf-8') )
+print('decoded byte ',bytes(toto, 'utf-8') )
 
-#print('password ',f.decrypt(decoded))
+print('password ',f.decrypt(decoded))
 
 # write python dict to a file
 mydict = encoded
