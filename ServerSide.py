@@ -5,6 +5,7 @@
 import socketserver, subprocess, sys
 from threading import Thread
 from pprint import pprint
+from cryptography.fernet import Fernet
 import json ,os
 
 class GetServerInfo:
@@ -66,10 +67,14 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         self.serverset = serverinit.ReadConfig()
 
 class AuthMec:
-    def __init__(self,AuthPass):
+    def __init__(self,AuthPass,CryptKey):
         self.AuthPass = AuthPass
+        self.CryptKey = CryptKey
 
     def DecPass(self):
+
+
+
 
 
 
