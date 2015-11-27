@@ -35,7 +35,7 @@ mydict2 = pickle.load(pkl_file)
 pkl_file.close()
 t = 'tIoUIXthxKcwzYY9uEKnyyir_eKQUlCqvB1tKH5eG7U='
 t = bytes(t ,'utf-8')
-print(t)
+print(t,'bytes')
 print (mydict)
 print (str(mydict2))
 outdec = ''
