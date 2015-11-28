@@ -7,10 +7,11 @@ from threading import Thread
 from pprint import pprint
 from cryptography.fernet import Fernet
 import json ,os
+import base64
 
 class GetServerInfo:
     def __init__(self):
-        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':''}
+        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':'','CryptKey':''}
 
     def ReadConfig(self):
 
@@ -68,10 +69,14 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 class AuthMec:
     def __init__(self,AuthPass,CryptKey):
-        self.AuthPass = bytes(AuthPass,'utf-8')
+        self.AuthPass = AuthPass
         self.CryptKey = bytes(CryptKey,'utf-8')
 
     def DecPass(self):
+
+        PassDecoded = self.AuthPass.decode("utf-8")
+        PassDecoded = bytes(PassDecoded,'utf-8')
+
 
 
 
