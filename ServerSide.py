@@ -11,7 +11,7 @@ import base64
 
 class GetServerInfo:
     def __init__(self):
-        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':'','CryptKey':''}
+        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':'','CryptKey':'','Password':''}
 
     def ReadConfig(self):
 
@@ -26,6 +26,8 @@ class GetServerInfo:
                 self.ServerSet['SrvPort'] = DataSet['ArnoldSite'][0]['SrvPort']
                 self.ServerSet['QuarantineIp'] = DataSet['ArnoldSite'][0]['QuarantineIp']
                 self.ServerSet['QrnPort'] = DataSet['ArnoldSite'][0]['QrnPort']
+                self.ServerSet['CryptKey'] = DataSet['ArnoldSite'][0]['CryptKey']
+                self.ServerSet['Password'] = DataSet['ArnoldSite'][0]['Password']
 
                 return self.ServerSet
 
@@ -68,14 +70,16 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         self.serverset = serverinit.ReadConfig()
 
 class AuthMec:
-    def __init__(self,AuthPass,CryptKey):
+    def __init__(self,AuthPass,CryptKey,Password):
         self.AuthPass = AuthPass
         self.CryptKey = bytes(CryptKey,'utf-8')
+        self.Password = Password
 
     def DecPass(self):
 
         PassDecoded = self.AuthPass.decode("utf-8")
         PassDecoded = bytes(PassDecoded,'utf-8')
+
 
 
 
