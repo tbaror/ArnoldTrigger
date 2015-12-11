@@ -4,7 +4,7 @@
     "QuarantineIp":"169.254.1.220",
     "QrnPort":"80",
     "CryptKey":"tIoUIXthxKcwzYY9uEKnyyir_eKQUlCqvB1tKH5eG7U=",
-    "Password":""
+    "Password":"Esprit12"
 
     }
 ]}

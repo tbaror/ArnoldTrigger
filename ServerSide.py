@@ -71,7 +71,7 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 class AuthMec:
     def __init__(self,AuthPass,CryptKey,Password):
-        self.AuthPass = AuthPass
+        self.AuthPass = bytes(AuthPass.decode,"utf-8")
         self.CryptKey = bytes(CryptKey,'utf-8')
         self.Password = Password
 
@@ -79,6 +79,7 @@ class AuthMec:
 
         PassDecoded = self.AuthPass.decode("utf-8")
         PassDecoded = bytes(PassDecoded,'utf-8')
+
 
 
 
