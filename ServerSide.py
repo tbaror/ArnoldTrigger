@@ -79,6 +79,12 @@ class AuthMec:
 
         PassDecoded = self.AuthPass.decode("utf-8")
         PassDecoded = bytes(PassDecoded,'utf-8')
+        KeyDec = Fernet(self.CryptKey)
+        if KeyDec.decrypt(PassDecoded) == self.Password:
+            return True
+        else:
+            return  False
+
 
 
 
