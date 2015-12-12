@@ -129,6 +129,7 @@ class TcpClientConnect:
         #Waiting for results
         result = s.recv(1024)
         txres =  result.decode('UTF-8')
+        print(txres)
 
         jsresult = json.loads(txres)
         print("%s"%jsresult)
