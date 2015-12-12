@@ -45,12 +45,15 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         try:
 
-
+            
             print(self.server.serverset)
             data = json.loads(self.request.recv(1024).decode('UTF-8').strip())
             # process the data, i.e. print it:
             #print(self.client_address)
             print(data)
+            Authstart = AuthMec()
+            
+            
             # send some 'ok' back
             #self.server.serverset['QuarantineIp']
             self.request.sendall(bytes(json.dumps({'QuarantineIp':self.server.serverset['QuarantineIp'],'SERVERIP':self.client_address[0]}), 'UTF-8'))
@@ -67,6 +70,7 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
         socketserver.TCPServer.__init__(self, server_address, RequestHandlerClass)
         #read configuraiton and seve it as class member
         serverinit = GetServerInfo()
+        
         self.serverset = serverinit.ReadConfig()
 
 class AuthMec:
