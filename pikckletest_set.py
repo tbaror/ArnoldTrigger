@@ -21,4 +21,5 @@ print('Token encoded: ',encoded)
 print(type(encoded))
 
 
-
+keyencode = base64.b64encode(b'tIoUIXthxKcwzYY9uEKnyyir_eKQUlCqvB1tKH5eG7U=')
+print('keyencode',keyencode)

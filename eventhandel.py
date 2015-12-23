@@ -60,11 +60,9 @@ class PassRetriever:
 
     def GetPassword(self):
 
-        ReadPassword =  pickle.load(open(os.getcwd()+'/'+self.ReadConfig(),'rb'))
-        print(ReadPassword)
-        PassDecoded = base64.b64decode(ReadPassword)
-        self.AuthPass = PassDecoded.decode("utf-8")
-
+        ReadPassword =  open(os.getcwd()+'/'+self.ReadConfig(),'r')
+        self.AuthPass = ReadPassword.readline()
+        print(self.AuthPass)
 
         return self.AuthPass
 
