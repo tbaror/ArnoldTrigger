@@ -9,24 +9,27 @@ print(key)
 f = Fernet(b'tIoUIXthxKcwzYY9uEKnyyir_eKQUlCqvB1tKH5eG7U=')
 
 token = f.encrypt(b"Esprit12")
-print('encryoted ',token)
+print('token encryoted ',token)
+
+mydict = token
+output = open('myfile.pkl', 'wb')
+pickle.dump(mydict, output)
+
+
 encoded = base64.b64encode(token)
-print('encoded: ',encoded)
+print('Token encoded: ',encoded)
 print(type(encoded))
 
 
 
 decoded = base64.b64decode(encoded)
-#print('decoded ',decoded.decode("utf-8") )
+print('decoded ',decoded)
 toto = decoded.decode("utf-8")
 print('decoded byte ',bytes(toto, 'utf-8') )
 
 print('password ',f.decrypt(decoded))
 
 # write python dict to a file
-mydict = encoded
-output = open('myfile.pkl', 'wb')
-pickle.dump(mydict, output)
 output.close()
 
 # read python dict back from the file

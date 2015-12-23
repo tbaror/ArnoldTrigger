@@ -2,7 +2,7 @@
 
 # skeleton from http://kmkeen.com/socketserver/2009-04-03-13-45-57-003.html
 
-import socketserver, subprocess, sys
+import socketserver, subprocess, sys,ssl
 from threading import Thread
 from pprint import pprint
 from cryptography.fernet import Fernet
@@ -71,6 +71,8 @@ class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
     def __init__(self, server_address, RequestHandlerClass):
         socketserver.TCPServer.__init__(self, server_address, RequestHandlerClass)
+        self.socket = ssl.wrap_socket(
+        self.socket, server_side=True, certfile="cert.pem",do_handshake_on_connect=False)
         #read configuraiton and seve it as class member
         serverinit = GetServerInfo()
         
