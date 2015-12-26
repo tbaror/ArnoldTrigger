@@ -122,10 +122,13 @@ class TcpClientConnect:
         self.SrvPort = SrvPort
 
     def ContactEnforcementHost(self):
+        print(os.getcwd()+'\client.pem')
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s = ssl.wrap_socket(s,ca_certs='C:/Python34/Lib/site-packages/requests/cacert.pem',
-                    cert_reqs=ssl.CERT_NONE)
+        #s = ssl.wrap_socket(s,ca_certs=os.getcwd()+'\client.pem',
+        #            cert_reqs=ssl.CERT_NONE)
         s.connect((self.EnforcementHost, int(self.SrvPort)))
+        SSLSocket = socket.ssl(s)
+        SSLSocket.
         s.send(bytes(json.dumps(self.Datapayload), 'UTF-8'))
         #Waiting for results
         result = s.recv(1024)
