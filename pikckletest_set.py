@@ -9,7 +9,7 @@ print(key)
 f = Fernet(b'tIoUIXthxKcwzYY9uEKnyyir_eKQUlCqvB1tKH5eG7U=')
 
 token = f.encrypt(b"Esprit12")
-print('token encryoted ',token)
+print('password encryoted ',token)
 
 mydict = token
 output = open('myfile.pkl', 'wb')

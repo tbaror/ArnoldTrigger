@@ -52,14 +52,14 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
             #print(self.client_address)
             print(data['AuthPass'],self.server.serverset['CryptKey'],self.server.serverset['Password'])
             Authstart = AuthMec(data['AuthPass'],self.server.serverset['CryptKey'],self.server.serverset['Password'])
-            Authstart.DecPass()
-            
-            
-            # send some 'ok' back
-            #self.server.serverset['QuarantineIp']
-            self.request.sendall(bytes(json.dumps({'QuarantineIp':self.server.serverset['QuarantineIp'],'SERVERIP':self.client_address[0]}), 'UTF-8'))
+            if Authstart.DecPass():
+                # send some 'ok' back
+                self.request.sendall(bytes(json.dumps({'QuarantineIp':self.server.serverset['QuarantineIp'],'QrnPort':self.server.serverset['QrnPort'],'AUTHPASS':'OKPASS'}), 'UTF-8'))
+            else:
+                self.request.sendall(bytes(json.dumps({'AUTHPASS':'NOGO'}), 'UTF-8'))
+
         except Exception as e:
-            print("Exception wile receiving message: ", e)
+            print("Exception wilhe receiving message: ", e)
 
 
 class TcpSessionServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
@@ -86,17 +86,21 @@ class AuthMec:
 
     def DecPass(self):
 
-        Pass2byte = bytes(self.AuthPass,'utf-8')
+        Token2byte = bytes(self.AuthPass,'utf-8')
 
-        PassDecoded = base64.b64decode(Pass2byte)
-        print('passdecoded',PassDecoded)
-        PassDecoded = bytes(PassDecoded,'utf-8')
-        KeyDec = Fernet(self.CryptKey)
-        print(KeyDec)
-        #if KeyDec.decrypt(PassDecoded) == self.Password:
-        #    return True
-        #else:
-        #    return  False
+        PassDecoded = base64.b64decode(Token2byte)
+        LocalPassword = bytes(self.CryptKey,'utf-8')
+        KeyDec = Fernet(PassDecoded)
+
+
+        Passdec = KeyDec.decrypt(LocalPassword)
+        print(Passdec)
+        if Passdec.decode("utf-8") == self.Password:
+            print('pass is equel')
+            return True
+        else:
+            print('pass not equel')
+            return  False
 
 
 
