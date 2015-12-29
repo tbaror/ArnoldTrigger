@@ -103,7 +103,7 @@ class AuthMec:
             return  False
 
 
-class DetainAction:
+class DetainService:
 
     def __init__(self,StartArnoldLocation,DetantionProfile,ComputerName,IpToDetained):
 
@@ -111,6 +111,18 @@ class DetainAction:
         self.DetantionProfile = DetantionProfile
         self.ComputerName = ComputerName
         self.IpToDetained = IpToDetained
+
+    def DetainAction(self):
+
+        #create detained file info
+        detainfile = datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + self.ComputerName
+        infofile = open(os.getcwd()+'/'+ detainfile,'w')
+        infofile.write(self.IpToDetained)
+        infofile.close()
+        os.system('cat '+os.getcwd()+'/'+ detainfile+' | '+self.StartArnoldLocation+' -i'+self.DetantionProfile)
+
+
+
 
 
 
