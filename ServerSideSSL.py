@@ -7,7 +7,7 @@ from threading import Thread
 from pprint import pprint
 from cryptography.fernet import Fernet
 import json ,os
-import base64
+import base64 ,datetime
 
 class GetServerInfo:
     def __init__(self):
@@ -103,10 +103,14 @@ class AuthMec:
             return  False
 
 
+class DetainAction:
 
+    def __init__(self,StartArnoldLocation,DetantionProfile,ComputerName,IpToDetained):
 
-
-
+        self.StartArnoldLocation = StartArnoldLocation
+        self.DetantionProfile = DetantionProfile
+        self.ComputerName = ComputerName
+        self.IpToDetained = IpToDetained
 
 
 

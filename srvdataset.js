@@ -4,7 +4,10 @@
     "QuarantineIp":"169.254.1.220",
     "QrnPort":"3033",
     "CryptKey":"gAAAAABWf98B8sbIhiWP2biEto8Me2bR3e7kJD0RmPuIrYAOa8F-GZ9sU2PfqnfUkkAdCXpmtMcAsu3Ige8xYz68XlwDXtpp6A==",
-    "Password":"Esprit12"
+    "Password":"Esprit12",
+    "StartArnoldLocation":"/usr/lib/nav/start_arnold.py",
+    "DetantionProfile":"1"
+
 
     }
 ]}
