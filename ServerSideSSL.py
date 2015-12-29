@@ -11,7 +11,7 @@ import base64 ,datetime
 
 class GetServerInfo:
     def __init__(self):
-        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':'','CryptKey':'','Password':''}
+        self.ServerSet ={'EnforcementHost':'','SrvPort':'','QuarantineIp':'','QrnPort':'','CryptKey':'','Password':'','StartArnoldLocation':'','DetantionProfile':''}
 
     def ReadConfig(self):
 
@@ -28,6 +28,8 @@ class GetServerInfo:
                 self.ServerSet['QrnPort'] = DataSet['ArnoldSite'][0]['QrnPort']
                 self.ServerSet['CryptKey'] = DataSet['ArnoldSite'][0]['CryptKey']
                 self.ServerSet['Password'] = DataSet['ArnoldSite'][0]['Password']
+                self.ServerSet['StartArnoldLocation'] = DataSet['ArnoldSite'][0]['StartArnoldLocation']
+                self.ServerSet['DetantionProfile'] = DataSet['ArnoldSite'][0]['DetantionProfile']
 
                 return self.ServerSet
 
@@ -55,7 +57,9 @@ class SingleTCPHandler(socketserver.BaseRequestHandler):
             if Authstart.DecPass():
                 # send some 'ok' back
                 self.request.sendall(bytes(json.dumps({'QuarantineIp':self.server.serverset['QuarantineIp'],'QrnPort':self.server.serverset['QrnPort'],'AUTHPASS':'OKPASS'}), 'UTF-8'))
-                DetainSession = DetainService(self.server.serverset['StartArnoldLocation'],self.server.serverset['DetantionProfile'],data['ComputerName'],self.client_address)
+                print(str(self.client_address))
+                DetainSession = DetainService(self.server.serverset['StartArnoldLocation'],self.server.serverset['DetantionProfile'],data['ComputerName'],self.client_address[0])
+                DetainSession.DetainAction()
             else:
                 self.request.sendall(bytes(json.dumps({'AUTHPASS':'NOGO'}), 'UTF-8'))
 
