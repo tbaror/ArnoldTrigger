@@ -1,5 +1,5 @@
-# Windows Event Log Viewer
-# FB - 201012116
+# Tal Bar-Or
+# Created - 20151230
 import win32evtlog # requires pywin32 pre-installed
 import os ,socket ,ssl
 import json,sys, getopt

@@ -1,7 +1,20 @@
 #!/usr/bin/env python
+'''
+ArnoldTrSr -- Server Demon to manage Clients Detaining request
 
-# skeleton from http://kmkeen.com/socketserver/2009-04-03-13-45-57-003.html
+ArnoldTrSr is a Server Demon to manage Clients Detaining request TCP server to handle multiple IP clients
 
+It defines classes_and_methods
+
+@author:     Tal Bar-Or
+
+@copyright:  2015 Dalet. All rights reserved.
+
+@license:    Openlicense
+
+@contact:    tbaror@gmail.com
+@deffield    updated: 29/12/2015
+'''
 import socketserver, subprocess, sys,ssl
 from threading import Thread
 from pprint import pprint
