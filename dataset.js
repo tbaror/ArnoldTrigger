@@ -7,6 +7,7 @@
     "EvtSourceName":"Symantec AntiVirus",
     "EvtSourceNameII":"Symantec AntiVirus",
     "PassFile":"tokenpass",
-    "NumEvt":"1"
+    "NumEvt":"1",
+    "QuarantineTimeOut":"2"
     }
 ]}

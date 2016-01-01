@@ -35,7 +35,7 @@ def main(argv):
 class GetServerInfo:
     def __init__(self):
 
-        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','NumEvt':''}
+        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','NumEvt':'','QuarantineTimeOut':''}
 
     def ReadConfig(self):
 
@@ -54,6 +54,7 @@ class GetServerInfo:
                 self.QuarantineSet['EventIdII'] = DataSet['ArnoldSite'][0]['EventIdII']
                 self.QuarantineSet['LogType'] = DataSet['ArnoldSite'][0]['LogType']
                 self.QuarantineSet['NumEvt'] = DataSet['ArnoldSite'][0]['NumEvt']
+                self.QuarantineSet['QuarantineTimeOut'] = DataSet['ArnoldSite'][0]['QuarantineTimeOut']
                 return self.QuarantineSet
 
 
