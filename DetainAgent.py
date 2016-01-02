@@ -2,7 +2,8 @@
 # Created - 20151230
 import win32evtlog # requires pywin32 pre-installed
 import os ,socket ,ssl
-import json,sys, getopt
+import json,sys,getopt
+import subprocess,time
 
 
 def main(argv):
@@ -35,7 +36,7 @@ def main(argv):
 class GetServerInfo:
     def __init__(self):
 
-        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','NumEvt':''}
+        self.QuarantineSet ={'EnforcementHost':'','SrvPort':'','EvtSourceName':'','EvtSourceNameII':'','EventID':'','EventIdII':'','LogType':'','NumEvt':'','QuarantineTimeOut':''}
 
     def ReadConfig(self):
 
@@ -54,6 +55,7 @@ class GetServerInfo:
                 self.QuarantineSet['EventIdII'] = DataSet['ArnoldSite'][0]['EventIdII']
                 self.QuarantineSet['LogType'] = DataSet['ArnoldSite'][0]['LogType']
                 self.QuarantineSet['NumEvt'] = DataSet['ArnoldSite'][0]['NumEvt']
+                self.QuarantineSet['QuarantineTimeOut'] = DataSet['ArnoldSite'][0]['QuarantineTimeOut']
                 return self.QuarantineSet
 
 
@@ -91,6 +93,21 @@ class PassRetriever:
         #print(self.AuthPass)
 
         return self.AuthPass
+
+
+class QuarantineServerWaitOnline:
+
+    def __init__(self,QuarantineIp,QuarantineTimeOut,QrnPort):
+
+        self.QuarantineIp = QuarantineIp
+        self.QuarantineTimeOut = QuarantineTimeOut
+        self.QrnPort = QrnPort
+
+    def QuarantineServerPing(self):
+        info = subprocess.STARTUPINFO()
+        info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        info.wShowWindow = subprocess.SW_HIDE
+
 
 
 

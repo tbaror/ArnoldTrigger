@@ -94,6 +94,7 @@ class PassRetriever:
         return self.AuthPass
 
 
+class QuarantineContact:
 
 
 class EvntCollector:
