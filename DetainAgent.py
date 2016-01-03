@@ -1,9 +1,12 @@
 # Tal Bar-Or
 # Created - 20151230
+#Ver 1.0
 import win32evtlog # requires pywin32 pre-installed
 import os ,socket ,ssl
 import json,sys,getopt
 import subprocess,time
+import urllib.request
+import zipfile
 
 
 def main(argv):
@@ -108,7 +111,7 @@ class QuarantineServerWaitOnline:
         info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         info.wShowWindow = subprocess.SW_HIDE
         pingstat = 0
-        pingtimeout = time.time() + 60*self.QuarantineTimeOut
+        pingtimeout = time.time() + (60*float(self.QuarantineTimeOut))
         while pingstat == 0:
             while True:
                 if pingtimeout == time.time() or time.time() > pingtimeout:
@@ -120,10 +123,32 @@ class QuarantineServerWaitOnline:
                     pass
                 elif "Request timed out" in pingmachine.decode('utf-8'):
                     pass
+                elif "General failure." in pingmachine.decode('utf-8'):
+                    pass
                 else:
 
                     return True
 
+
+class CleanPackManage:
+
+    def __init__(self,UrlPackage):
+        self.UrlPackage = UrlPackage
+
+    def PackageDownloader(self):
+        rescuepackage = 'avpack.zip'
+        try:
+            with urllib.request.urlopen(self.UrlPackage) as response, open(os.getcwd()+'/'+rescuepackage, 'wb') as out_file:
+            data = response.read() # a `bytes` object
+            out_file.write(data)
+            return True
+
+        except Exception  as e:
+            print(e)
+            return False
+
+
+    def PackageUnzip(self):
 
 
 

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="174df233-dc38-4432-b74c-dd5a98466c2a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pingtest_set.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetainAgent.py" afterPath="$PROJECT_DIR$/DetainAgent.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pingtest_set.py" afterPath="$PROJECT_DIR$/pingtest_set.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urldownloadtest.py" afterPath="$PROJECT_DIR$/urldownloadtest.py" />
     </list>
     <ignored path="arnoldrigger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,7 +24,8 @@
     <SUITE FILE_PATH="coverage/arnoldrigger$pikckletest_set.coverage" NAME="pikckletest_set Coverage Results" MODIFIED="1451220735926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/arnoldrigger$eventqe.coverage" NAME="eventqe Coverage Results" MODIFIED="1451484763854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/arnoldrigger$decrypttest.coverage" NAME="decrypttest Coverage Results" MODIFIED="1450626391204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/arnoldrigger$pingtest_set.coverage" NAME="pingtest_set Coverage Results" MODIFIED="1451574787498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/arnoldrigger$pingtest_set.coverage" NAME="pingtest_set Coverage Results" MODIFIED="1451825397189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/arnoldrigger$urldownloadtest.coverage" NAME="urldownloadtest Coverage Results" MODIFIED="1451831541982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/arnoldrigger$pikckletest.coverage" NAME="pikckletest Coverage Results" MODIFIED="1450818975681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/arnoldrigger$eventhandel.coverage" NAME="eventhandel Coverage Results" MODIFIED="1450962399304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/arnoldrigger$pingtest.coverage" NAME="pingtest Coverage Results" MODIFIED="1451574692208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -56,33 +59,37 @@
               <folding>
                 <element signature="e#595#1889#0" expanded="false" />
                 <element signature="e#1954#3243#0" expanded="false" />
-                <element signature="e#3327#3901#0" expanded="false" />
                 <element signature="e#3922#4545#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eventhandelSSL.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/eventhandelSSL.py">
+      <file leaf-file-name="DetainAgent.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DetainAgent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8715278">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding>
-                <element signature="e#44#95#0" expanded="true" />
-                <element signature="e#3075#4878#0" expanded="false" />
+                <element signature="e#43#94#0" expanded="true" />
+                <element signature="e#223#1017#0" expanded="false" />
+                <element signature="e#2492#3230#0" expanded="false" />
+                <element signature="e#3272#4405#0" expanded="false" />
+                <element signature="e#3500#4405#0" expanded="false" />
+                <element signature="e#4963#6766#0" expanded="false" />
+                <element signature="e#6796#7530#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetainAgent.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DetainAgent.py">
+      <file leaf-file-name="urldownloadtest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urldownloadtest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="12" column="12" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="12" />
               <folding>
-                <element signature="e#34#85#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pingtest_set.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pingtest_set.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pingtest_set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71875">
-              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
               <folding>
                 <element signature="e#17#34#0" expanded="true" />
               </folding>
@@ -126,7 +133,7 @@
         <entry file="file://$PROJECT_DIR$/dataset.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -176,10 +183,11 @@
         <option value="$PROJECT_DIR$/argumentii.py" />
         <option value="$PROJECT_DIR$/eventhandelSSL.py" />
         <option value="$PROJECT_DIR$/dataset.js" />
-        <option value="$PROJECT_DIR$/DetainAgent.py" />
         <option value="$PROJECT_DIR$/setupcl.py" />
         <option value="$PROJECT_DIR$/pingtest.py" />
         <option value="$PROJECT_DIR$/pingtest_set.py" />
+        <option value="$PROJECT_DIR$/urldownloadtest.py" />
+        <option value="$PROJECT_DIR$/DetainAgent.py" />
       </list>
     </option>
   </component>
@@ -256,25 +264,7 @@
       <recent name="C:\Users\tbaror.GEFEN\PycharmProjects\Arnoldtrigger\arnoldrigger" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pingtest_set">
-    <configuration default="false" name="eventhandelSSL" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ArnoldTrigger" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/eventhandelSSL.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.urldownloadtest">
     <configuration default="false" name="evtqeII" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -343,6 +333,24 @@
       <module name="ArnoldTrigger" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pingtest_set.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="urldownloadtest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ArnoldTrigger" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/urldownloadtest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -542,19 +550,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.eventhandelSSL" />
-      <item index="1" class="java.lang.String" itemvalue="Python.evtqeII" />
-      <item index="2" class="java.lang.String" itemvalue="Python.eventqe" />
-      <item index="3" class="java.lang.String" itemvalue="Python.pingtest" />
-      <item index="4" class="java.lang.String" itemvalue="Python.pingtest_set" />
+      <item index="0" class="java.lang.String" itemvalue="Python.evtqeII" />
+      <item index="1" class="java.lang.String" itemvalue="Python.eventqe" />
+      <item index="2" class="java.lang.String" itemvalue="Python.pingtest" />
+      <item index="3" class="java.lang.String" itemvalue="Python.pingtest_set" />
+      <item index="4" class="java.lang.String" itemvalue="Python.urldownloadtest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.pingtest_set" />
-        <item index="1" class="java.lang.String" itemvalue="Python.pingtest" />
-        <item index="2" class="java.lang.String" itemvalue="Python.eventqe" />
-        <item index="3" class="java.lang.String" itemvalue="Python.evtqeII" />
-        <item index="4" class="java.lang.String" itemvalue="Python.eventhandelSSL" />
+        <item index="0" class="java.lang.String" itemvalue="Python.urldownloadtest" />
+        <item index="1" class="java.lang.String" itemvalue="Python.pingtest_set" />
+        <item index="2" class="java.lang.String" itemvalue="Python.pingtest" />
+        <item index="3" class="java.lang.String" itemvalue="Python.eventqe" />
+        <item index="4" class="java.lang.String" itemvalue="Python.evtqeII" />
       </list>
     </recent_temporary>
   </component>
@@ -660,12 +668,12 @@
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10227273" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.103354976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32906976" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280899" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31573033" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -719,14 +727,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dataset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pikckletest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1003,45 +1003,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eventhandelSSL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding>
-            <element signature="e#44#95#0" expanded="true" />
-            <element signature="e#3075#4878#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ArnoldTrSrv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="83" selection-start-line="139" selection-start-column="83" selection-end-line="139" selection-end-column="83" />
-          <folding>
-            <element signature="e#595#1889#0" expanded="false" />
-            <element signature="e#1954#3243#0" expanded="false" />
-            <element signature="e#3327#3901#0" expanded="false" />
-            <element signature="e#3922#4545#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DetainAgent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#34#85#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1074,19 +1040,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python34/Scripts/ping.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/python3-ping-master/python3-ping-master/ping.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventhandelSSL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5208333">
+          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+          <folding>
+            <element signature="e#44#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArnoldTrSrv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="139" column="83" selection-start-line="139" selection-start-column="83" selection-end-line="139" selection-end-column="83" />
+          <folding>
+            <element signature="e#595#1889#0" expanded="false" />
+            <element signature="e#1954#3243#0" expanded="false" />
+            <element signature="e#3922#4545#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1100,12 +1079,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python34/Scripts/ping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pingtest_set.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71875">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding>
             <element signature="e#17#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urldownloadtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetainAgent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8715278">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <element signature="e#43#94#0" expanded="true" />
+            <element signature="e#223#1017#0" expanded="false" />
+            <element signature="e#2492#3230#0" expanded="false" />
+            <element signature="e#3272#4405#0" expanded="false" />
+            <element signature="e#3500#4405#0" expanded="false" />
+            <element signature="e#4963#6766#0" expanded="false" />
+            <element signature="e#6796#7530#0" expanded="false" />
           </folding>
         </state>
       </provider>

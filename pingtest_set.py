@@ -2,8 +2,9 @@
 import subprocess
 import time
 
+t = '0.3'
 def pinghost():
-    timeout = time.time() + 60*1   # 5 minutes from now
+    timeout = time.time() + (60*float(t))   # 5 minutes from now
     # Configure subprocess to hide the console window
     info = subprocess.STARTUPINFO()
     info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
@@ -12,7 +13,7 @@ def pinghost():
     # For each IP address in the subnet,
     # run the ping command with subprocess.popen interface
     statusa = 0
-    timeout = time.time() + 60*1   # 5 minutes from now
+    #timeout = time.time() + 60*1   # 5 minutes from now
     while statusa == 0:
         while True:
             if timeout == time.time() or time.time() > timeout:
@@ -21,7 +22,7 @@ def pinghost():
 
 
 
-            output = subprocess.Popen(['ping', '-n', '1', '-w', '500', '212.143.237.19'], stdout=subprocess.PIPE, startupinfo=info).communicate()[0]
+            output = subprocess.Popen(['ping', '-n', '1', '-w', '500', '212.143.237.155'], stdout=subprocess.PIPE, startupinfo=info).communicate()[0]
 
             if "Destination host unreachable" in output.decode('utf-8'):
                 pass
