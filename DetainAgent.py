@@ -107,6 +107,23 @@ class QuarantineServerWaitOnline:
         info = subprocess.STARTUPINFO()
         info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         info.wShowWindow = subprocess.SW_HIDE
+        pingstat = 0
+        pingtimeout = time.time() + 60*self.QuarantineTimeOut
+        while pingstat == 0:
+            while True:
+                if pingtimeout == time.time() or time.time() > pingtimeout:
+                    return False
+
+                pingmachine = subprocess.Popen(['ping', '-n', '1', '-w', '500', self.QuarantineIp], stdout=subprocess.PIPE, startupinfo=info).communicate()[0]
+
+                if "Destination host unreachable" in pingmachine.decode('utf-8'):
+                    pass
+                elif "Request timed out" in pingmachine.decode('utf-8'):
+                    pass
+                else:
+
+                    return True
+
 
 
 
