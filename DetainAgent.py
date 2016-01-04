@@ -150,6 +150,19 @@ class CleanPackManage:
 
     def PackageUnzip(self):
 
+        rescuepackage = 'avpack.zip'
+        try:
+            fzip = open(os.getcwd()+'/'+rescuepackage, 'rb')
+            z = zipfile.ZipFile(fzip)
+            for name in z.namelist():
+                outpath = os.getcwd()+'/AvRescue'
+                z.extract(name, outpath)
+            return True
+
+        except Exception  as e:
+            print(e)
+            return False
+
 
 
 
