@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary
+* Tcp client agent /server for automate windows clients quarantine upon event (Symantec virus detection)
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
