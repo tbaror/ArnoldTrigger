@@ -17,7 +17,7 @@ def main(argv):
       pass
    for opt, arg in opts:
       if opt == '-v':
-         print ('DetainAgent Version 1.0 ,Dalet IT')
+         print ('DetainAgent Version 1.0 ,Tal Bar-Or')
          sys.exit()
    eventb = GetServerInfo()
    data = eventb.ReadConfig()
